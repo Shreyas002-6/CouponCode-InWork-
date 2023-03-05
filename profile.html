@@ -105,7 +105,7 @@ border-radius: 50px;
         
        <div class="profile mt-5">
        
-       <button class="profile_button px-5">Edit profile</button>
+       <button class="profile_button px-5" id="edit">Edit profile</button>
     </div>
          
         </div>
@@ -153,12 +153,32 @@ border-radius: 50px;
     var findmail = document.querySelector("#findmail");
     findmail.innerHTML = user.email;
 
+    document.getElementById("edit").addEventListener("click", function() {
+    const db = getDatabase();
+    let username = prompt("Enter your username")
+    set(ref(db, "User/"+ uid),{
+                username : username
+            })
+            .then(()=>{
+                alert("Data added successfully");
+                var finduser = document.querySelector("#finduser");
+                finduser.innerHTML = username;
+
+            })
+            .catch((error)=>{
+                alert(error);
+            });
+            });
+
     // ...
   } else {
     // User is signed out
     // ...
   }
 });
+      
+
+        
 
       
     
