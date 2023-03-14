@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>profile</title>
+  <title>Sell</title>
   
 
 </head>
@@ -11,8 +11,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style>
+    #sellout{
+      width: 30%;
+      margin-left: 35%;
+      margin-top: 15px;
+    }
+    .form-group{
+      margin-top: 10px;
+    }
+
+    #sell{
+      margin-top: 25px;
+    }
+  </style>
   <!-- Design by foolishdeveloper.com -->
-    <title>profile</title>
+    <title>Sell</title>
  
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -24,36 +38,9 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!--Stylesheet-->
-    <style media="screen">
-      body{
-        background-color: #FFF5EE;
-      }
-      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
-.card {
-  margin-top: 15px;
-  color: black;
-    width: 350px;
-    border-radius: 10px;
-   background-color: #F0FFFF;
-    border: none;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
 
-.line{
-  color: black;
-}
-
-.profile_button{
-  backgorund-color: white;
-  padding:10px; 
-   border:none;
-   outline:0 !important;
-border-radius: 50px;
-  
-}
-     </style>
 </head>
-<body>
+<body style="background: #F0FFFF;">
     
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -71,52 +58,53 @@ border-radius: 50px;
           <a class="nav-link" aria-current="page" href="home.html">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">Profile</a>
+          <a class="nav-link" href="profile.html">Profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="Sell.html">Sell</a>
+          <a class="nav-link active" href="#">Sell</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link active" href="login.html" style="color: #AA336A;"><u>Sign Out</u></a>
+          <a class="nav-link" href="" id="findmail" style="color:red;"></a>
         </li>
+
       </ul>
+
     </div>
+          
   </div>
 </nav>
 
-<div class="container d-flex justify-content-center">
-    <div class="card p-3 py-4">
-        <div class="text-center"> 
-    <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" width="100" class="rounded-circle">
-            <h3 class="mt-2" id="finduser">Username</h3>
-      <span class="mt-1 clearfix" id="findmail">Mail</span>
-      
-      <div class="row mt-3 mb-3">
-      
-        <div class="col-md-6">
-        <h5>Purchase?</h5>
-        <span class="num">xx</span>
-        </div>
-        <div class="col-md-6">
-        <h5>Sell</h5>
-        <span class="num">xx</span>
-      </div>
-      
-      <hr class="line">
-      
-      <small class="mt-4">{is bio necessary?}</small>
-        
-       <div class="profile mt-5">
-       
-       <button class="profile_button px-5" id="edit">Edit profile</button>
-    </div>
-         
-        </div>
-    </div>
-</div>
+
+
+<form id="sellout">
+  <center><label><b>ADD COUPON</b></label></center>
+
+  <div class="form-group">
+
+    <label for="%">Discount(%)</label>
+    <input type="text" class="form-control" value="" id="dis" aria-describedby="" placeholder="Enter %">
+  </div>
+ <div class="form-group">
+    <label for="brand">Brand</label>
+    <input type="text" class="form-control" id="brand" aria-describedby="" placeholder="Enter Brand Name"></div>
+<div class="form-group">
+    <label for="code">Code</label>
+    <input type="text" class="form-control" id="code" aria-describedby="" placeholder="Enter Discount Code">
+  </div>
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input type="text" class="form-control" id="price" aria-describedby="" placeholder="Enter Price(₹)">
+  </div>
+  <div class="form-group">
+    <label for="upi">UPI ID</label>
+    <input type="text" class="form-control" id="upi" aria-describedby="" placeholder="Enter Your UPI ID">
+  </div>
+  <center><button class="btn btn-primary" id="sell" type="reset">Submit</button></center>
+</form>
 </body>
 <script type="module">
       // Import the functions you need from the SDKs you need
@@ -154,45 +142,45 @@ border-radius: 50px;
     // https://firebase.google.com/docs/reference/js/firebase.User
     const uid = user.uid;
     console.log(uid)
-    ///alert("Welcome "+user.email)
+var findmail = document.querySelector("#findmail");
+                    findmail.innerHTML = user.email;
+
     console.log(user)
-    var findmail = document.querySelector("#findmail");
-    findmail.innerHTML = user.email;
-    const db = getDatabase();
+const brand = document.getElementById("brand")
+const code = document.getElementById("code")
+const price = document.getElementById("price")
+const dis = document.getElementById("dis")
+const upi = document.getElementById("upi")
 
-    const dbref = ref(db);
-
-            get(child(dbref, "User/" + uid))
-            .then((snapshot)=>{
-                if(snapshot.exists()){
-                  var finduser = document.querySelector("#finduser");
-                    finduser.innerHTML = snapshot.val().username;
-                } else {
-                    alert("No data found");
-                }
-            })
-            .catch((error)=>{
-                alert(error)
-            })
-
-
-
-    document.getElementById("edit").addEventListener("click", function() {
-    const db = getDatabase();
-    let username = prompt("Enter your username")
-    set(ref(db, "User/"+ uid),{
-                username : username
+document.getElementById("sell").addEventListener("click", function() {
+  const db = getDatabase();
+//set(ref(db, "Coupon/"+uid+"/"),{
+  var date = Date(Date.now());
+  set(ref(db, "Coupon/"+date+"/"),{
+                mail : user.email,
+                brand : brand.value,
+                price : price.value,
+                dis : dis.value,
+                code : code.value,
+                upi : upi.value
             })
             .then(()=>{
-                alert("Username changed successfully!");
-                var finduser = document.querySelector("#finduser");
-                finduser.innerHTML = username;
+                alert("Coupon added successfully");
+                document.getElementById("sellout").reset();
+      
 
             })
             .catch((error)=>{
                 alert(error);
             });
-            });
+
+
+});
+
+
+
+
+
 
     // ...
   } else {
@@ -202,9 +190,6 @@ border-radius: 50px;
 });
       
 
-        
-
-      
     
       </script>
 </html>
